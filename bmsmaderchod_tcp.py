@@ -143,7 +143,8 @@ global player_rect
 player_rect = player_img.get_rect(center=screen.get_rect().center)
 
 try:
-    while(1):   
+    while(1):  
+            print(transmit.recv(1024)) 
             pygame.event.pump()
             on=j.get_button(1)
             if on:
