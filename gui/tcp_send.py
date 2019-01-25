@@ -17,8 +17,8 @@ def arm():
         m2=j.get_button(7)
         m3=j.get_button(8)
         m4=j.get_button(9)
-        m5=j.get_button(10)
-        m6=j.get_button(11)
+        m5=j.get_button(5)
+        m6=j.get_button(3)
         up=j.get_button(4)
         down=j.get_button(2)
         data="nM"

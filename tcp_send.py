@@ -1,4 +1,3 @@
-
 import socket
 import time
 import pygame
@@ -18,65 +17,71 @@ def arm():
         m2=j.get_button(7)
         m3=j.get_button(8)
         m4=j.get_button(9)
-        m5=j.get_button(10)
-        m6=j.get_button(11)
-        up=j.get_button(4)
-        down=j.get_button(2)
+        m5=j.get_button(4)
+        m6=j.get_button(2)
+        hat=j.get_hat(0)
+        p=' '
         data="nM"
         if m5:
+                p='Swivel'
+                if hat[0]==1:
 
-                if up:
-
-                        print('swivel clockwise'),
+                        p='swivel clockwise'
                         data="nA"
-                elif down:
-                        print('swivel anticlockwise'),
+                elif hat[0]==-1:
+                        p='swivel anticlockwise'
                         data="nB"#swivel
         elif m6:
-                if down:
-                        print('actuator up'),
+                p='1st Link'
+                if  hat[1]==1:
+                        p='1st link linear act up'
                         data="nC"
-                elif up:
-                        print('actuator down'),
+                elif hat[1]==-1:
+                        p='1st link linear act down'
                         data="nD"#actuator
         elif m3:
-                if down:
-                        print('roll anticlockwise'),
+                p='Roll'
+                if hat[0]==-1 :
+                        p='roll anticlockwise'
                         data="nE"
-                elif up:
-                        print('roll clockwise'),
+                elif hat[0]==1:
+                        p='roll clockwise'
                         data="nF"
-        elif m4:
-                if up:
-                        print('2nd link down'),
+        elif m1:
+                p='2nd Link'
+                if hat[1]==-1:
+                        p='gripper close'
                         data="nG"
-                elif down:          
-                        print('2nd link up'),
+                elif hat[1]==1:         
+                        p='gripper open'
                         data="nH"
         elif m2:
-                if up:
-                        print('pitch down'),
+                p='Pitch'
+                if hat[1]==1:
+                        p='pitch down'
                         data="nI"
-                elif down:
-                        print('pitch up'),
+                elif hat[1]==-1:
+                        p='pitch up'
                         data="nJ"
-        elif m1:
-                if up:
-                        print('gripper open'),
+        elif m4:
+                p='Gripper'
+                if hat[0]==1 :
+                        p='link 2 linear act up'
                         data="nK"
-                elif down:
-                        print('gripper close'),
+                elif hat[0]==-1 :
+                        p='link 2 linear act down'
                         data="nL"#gripper
         else:
-                print("N/A"),
-        pygame.display.set_caption('Motor {:2s} '.format(data))
-        print(data)                
+                p="N/A"
+        pygame.display.set_caption('Motor {:2s} '.format(p))
+        print(p+data)                
         transmit.send(data)
 
 def motorcode():
         global x1,y1,gear
         x1=j.get_axis(0)
         y1=j.get_axis(1)
+        #print(x1,y1)
         gear=0
         gear=j.get_axis(3)
 
@@ -85,7 +90,7 @@ def motorcode():
         gear=int(map1(gear,-1.0,1.0,9,0))
         x=map1(x1,-1.0,1.0,0.0,9999)
         y=map1(y1,-1.0,1.0,0.0,9999)
-
+        
         zero=j.get_axis(2)
 
         if(zero>0.7):
@@ -143,8 +148,9 @@ global player_rect
 player_rect = player_img.get_rect(center=screen.get_rect().center)
 
 try:
-    while(1):   
+    while(1):    
             pygame.event.pump()
+            #print(transmit.recv(1024))
             on=j.get_button(1)
             if on:
                     sleep(0.2)
