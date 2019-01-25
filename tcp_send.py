@@ -26,50 +26,50 @@ def arm():
                 p='Swivel'
                 if hat[0]==1:
 
-                        p='swivel clockwise'
+                        p='swivel clockwise '
                         data="nA"
                 elif hat[0]==-1:
-                        p='swivel anticlockwise'
+                        p='swivel anticlockwise '
                         data="nB"#swivel
-        elif m6:
-                p='1st Link'
+        elif m2:
+                p='2nd Link'
                 if  hat[1]==1:
-                        p='1st link linear act up'
+                        p='2nd link linear down '
                         data="nC"
                 elif hat[1]==-1:
-                        p='1st link linear act down'
+                        p='2nd link linear up '
                         data="nD"#actuator
         elif m3:
-                p='Roll'
+                p='pitch'
                 if hat[0]==-1 :
-                        p='roll anticlockwise'
+                        p='pitch up '
                         data="nE"
                 elif hat[0]==1:
-                        p='roll clockwise'
+                        p='pitch down'
                         data="nF"
-        elif m1:
-                p='2nd Link'
+        elif m6:
+                p='gripper'
                 if hat[1]==-1:
-                        p='gripper close'
+                        p='gripper close '
                         data="nG"
                 elif hat[1]==1:         
-                        p='gripper open'
+                        p='gripper open '
                         data="nH"
-        elif m2:
-                p='Pitch'
+        elif m4:
+                p='roll'
                 if hat[1]==1:
-                        p='pitch down'
+                        p='roll anticlockwise '
                         data="nI"
                 elif hat[1]==-1:
-                        p='pitch up'
+                        p='roll clockwise '
                         data="nJ"
-        elif m4:
-                p='Gripper'
+        elif m1:
+                p='1st link'
                 if hat[0]==1 :
-                        p='link 2 linear act up'
+                        p='link 1 linear  up'
                         data="nK"
                 elif hat[0]==-1 :
-                        p='link 2 linear act down'
+                        p='link 1 linear down'
                         data="nL"#gripper
         else:
                 p="N/A"
