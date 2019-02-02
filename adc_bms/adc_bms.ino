@@ -6,7 +6,7 @@ double val=0;
 
 void setup() {
   
-  Serial.begin(9600);
+  Serial.begin(38400);
   
   pinMode(ledPin, OUTPUT);  
 }
@@ -28,13 +28,13 @@ void loop() {
  //Serial.println();
   Serial.println(val,8);  
   Serial.println();
-  delay(1000); 
+  delay(100); 
   
-  digitalWrite(ledPin, HIGH);  
+ // digitalWrite(ledPin, HIGH);  
  
-  delay(sensorValue);          
+ // delay(sensorValue);          
         
-  digitalWrite(ledPin, LOW);   
+//  digitalWrite(ledPin, LOW);   
   
   //delay(sensorValue);                  
 }
