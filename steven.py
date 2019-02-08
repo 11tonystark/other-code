@@ -1,31 +1,19 @@
 
-import serial
-import binascii
-import time
+import serial                           # import the module 
 
-ser = serial.Serial()
+ComPort = serial.Serial('/dev/ttyUSB0') # open ttyUSB0 
 
-def initSerial():
-    global ser
-    ser.baudrate = 9600
-    ser.port = '/dev/ttyUSB0'
-   # ser.port = 'COM7'
-    #ser.timeout =0
-    ser.stopbits = serial.STOPBITS_ONE
-    ser.bytesize = 8
-    ser.parity = serial.PARITY_NONE
-    ser.rtscts = 0
+ComPort.baudrate = 9600                 # set Baud rate 
+ComPort.bytesize = 8                    # Number of data bits = 8
+ComPort.parity = 'N'                    # No parity
+ComPort.stopbits = 1                    # Number of Stop bits = 1
 
-def main():
-    initSerial()
-    global ser
-    ser.open()
-    while True:
-        mHex = ser.read()
-        if len(mHex)!= 0:
-            print("get",binascii.hexlify(bytearray(mHex)))
-        time.sleep(0.1)
+#Write character 'A' to serial port                            
+                 # Convert Character to byte array
+#data = bytearray('<012>TR<\r><\n>')                    
+No = ComPort.write('024TR\r\n')
+#No = ComPort.write('021TO\r\n')# Write data to serial port
+data = ComPort.readline()               # Wait and read data from serial port
+print(data)
+#<addr>SN=?<CR><LF>
 
-
-if __name__ == "__main__":
-    main()
