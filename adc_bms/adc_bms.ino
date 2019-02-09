@@ -21,7 +21,7 @@ void setup() {
 void loop() {
  
   sensorValue = analogRead(sensorPin);  
-  val = map(sensorValue,0,1023,0,5);
+  val = map(sensorValue,0,1023,0,5);//3.4 hai new value
   
   Serial.println(sensorValue); 
   

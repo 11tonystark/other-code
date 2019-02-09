@@ -1,7 +1,7 @@
 int sensorPin = A0;    
 int ledPin = 13;      
 double sensorValue = 0;  
-double val=0;
+double val=0,val1=0;
 int a;
 
 void setup() {
@@ -21,12 +21,12 @@ void setup() {
 void loop() {
  
   sensorValue = analogRead(sensorPin);  
-  val = map(sensorValue,0,1023,0,26.1);
-  
+  val = map(sensorValue,0,700,0,3.4);
+   val1 = map(val,0,3.4,0,25);
  Serial.println(val); 
  
- Serial.println();
-  Serial.println(val,2);  
+// Serial.println();
+  Serial.print(val1,3);  
  // Serial.println();
   a=5;
 // Serial.write(val);
