@@ -16,66 +16,66 @@ def arm():
         m1=j.get_button(6)
         m2=j.get_button(7)
         m3=j.get_button(5)
-        m4=j.get_button(3)
-        m5=j.get_button(4)
-        m6=j.get_button(2)
+        m4=j.get_button(9)
+        m5=j.get_button(2)
+        m6=j.get_button(4)
         hat=j.get_hat(0)
         p=' '
         data="nM"
         if m5:
-                p='Swivel'
+                p='collector plate'
                 if hat[0]==1:
 
-                        p='swivel clockwise '
-                        data="nA"
+                        p='collector clockwise '
+                        data="nG"
                 elif hat[0]==-1:
-                        p='swivel anticlockwise '
-                        data="nB"#swivel
+                        p='collector anticlockwise '
+                        data="nH"#swivel
         elif m2:
-                p='2nd Link'
+                p='water tube'
                 if  hat[1]==1:
-                        p='2nd link linear down '
+                        p='water tube down '
                         data="nC"
                 elif hat[1]==-1:
-                        p='2nd link linear up '
+                        p='water tube up '
                         data="nD"#actuator
-        elif m3:
-                p='pitch'
-                if hat[1]==-1 :
-                        p='pitch up '
-                        data="nE"
-                elif hat[1]==1:
-                        p='pitch down'
-                        data="nF"
         elif m6:
-                p='gripper'
-                if hat[1]==-1 or hat[0]==-1:
-                        p='gripper close '
-                        data="nG"
-                elif hat[1]==1 or hat[0]==1:         
-                        p='gripper open '
-                        data="nH"
-        elif m4:
-                p='roll'
-                if hat[0]==-1:
-                        p='roll anticlockwise '
+                p='screw'
+                if hat[1]==-1 :
+                        p='lead screw up '
                         data="nI"
-                elif hat[0]==1 :
-                        p='roll clockwise '
+                elif hat[1]==1:
+                        p='lead screw down'
                         data="nJ"
         elif m1:
-                p='1st link'
+                p='auger'
+                if hat[1]==-1 or hat[0]==-1:
+                        p='auger close '
+                        data="nA"
+                elif hat[1]==1 or hat[0]==1:         
+                        p='auger open '
+                        data="nB"
+        elif m3:
+                p='vinegar tube'
+                if hat[0]==-1:
+                        p='vinegar up '
+                        data="nE"
+                elif hat[0]==1 :
+                        p='vinegar down '
+                        data="nF"
+        elif m4:
+                p='killll'
                 if hat[1]==-1 :
-                        p='link 1 linear  up'
+                        p='full kill'
                         data="nK"
                 elif hat[1]==1 :
-                        p='link 1 linear down'
+                        p='full kill'
                         data="nL"#gripper
         else:
                 p="N/A"
         pygame.display.set_caption('Motor {:2s} '.format(p))
         print(p+data)                
-        ser.write(data)
+        transmit.send(data)
 
 def motorcode():
         global x1,y1,gear
@@ -112,24 +112,24 @@ def motorcode():
         # elif hat[0]==-1:
         #         x=0
         p=' '
-        camera="z"
+        camera="cz"
         if c1:
                 p='Mast Yaw'
                 if hat[0]==1:
 
                         p='Mast Yaw clockwise '
-                        camera="a"
+                        camera="ca"
                 elif hat[0]==-1:
                         p='Mast Yaw anticlockwise '
-                        camera="b"
+                        camera="cb"
         elif c2:
                 p='Mast Pitch'
                 if  hat[1]==1:
                         p='Mast Pitch down '
-                        camera="c"
+                        camera="cc"
                 elif hat[1]==-1:
                         p='Mast Pitch up '
-                        camera="d"
+                        camera="cd"
 
         x=str(int(x)).zfill(4)
         y=str(int(y)).zfill(4)
@@ -138,7 +138,8 @@ def motorcode():
         #clear()
         print(val)
 
-        ser.write(val)
+        transmit.send(val)
+    
     
 count=0
 TCP_IP = '192.168.1.7'
@@ -146,7 +147,9 @@ TCP_PORT = 5005
 BUFFER_SIZE = 1024
 MESSAGE = "Hello, World!"
 
-ser=serial.Serial('/dev/ttyUSB0',38400)
+transmit = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+transmit.connect((TCP_IP, TCP_PORT))
+
 
 joystick.init()
 pygame.display.init()
@@ -214,3 +217,4 @@ except KeyboardInterrupt:
     print('lol')
     pygame.display.quit()
     pygame.quit()
+
