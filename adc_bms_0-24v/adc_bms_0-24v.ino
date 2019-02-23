@@ -21,13 +21,14 @@ void setup() {
 void loop() {
  
   sensorValue = analogRead(sensorPin);  
-  val = map(sensorValue,0,700,0,3.4);
+  val = map(sensorValue,0,644,0,3.4);
    val1 = map(val,0,3.4,0,25);
- Serial.println(val); 
+ //Serial.println(val); 
  
-// Serial.println();
-  Serial.print(val1,3);  
- // Serial.println();
+ Serial.print('\t');
+  Serial.print(val1,1);
+  Serial.print(" Volt");
+// Serial.print();
   a=5;
 // Serial.write(val);
   delay(300); 
