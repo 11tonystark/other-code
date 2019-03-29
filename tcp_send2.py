@@ -23,13 +23,13 @@ def arm():
         p=' '
         data="nM"
         if m5:
-                p='auger'
+                p='vinegar'
                 if hat[1]==1:
 
-                        p='auger soil drill '
+                        p='vinegar down '
                         data="nG"
                 elif hat[1]==-1:
-                        p='auger remove '
+                        p='vinegar up '
                         data="nH"#swivel
         elif m6:
                 p='lead screw1'
@@ -48,25 +48,25 @@ def arm():
                         p='water tube down'
                         data="nJ"
         elif m1:
-                p='vinegar '
+                p='Auger '
                 if hat[1]==-1 or hat[0]==-1:
-                        p='vinegar up '
+                        p='Auger drill up '
                         data="nA"
                 elif hat[1]==1 or hat[0]==1:         
-                        p='vinegar down '
+                        p='auger remove '
                         data="nB"
         elif m3:
                 p='collector plate'
                 if hat[0]==-1:
-                        p='collector anticlockwise '
+                        p='collector clockwise '
                         data="nE"
                 elif hat[0]==1 :
-                        p='collector clockwise '
+                        p='collector anti-clockwise '
                         data="nF"
         elif m4:
-                p='killll'
+                p='Drill Burst'
                 if hat[1]==-1 :
-                        p='full kill'
+                        p='Drill Active'
                         data="nK"
                 elif hat[1]==1 :
                         p='full kill'
@@ -115,19 +115,19 @@ def motorcode():
         camera="z"
         if c1:
                 p='Mast Yaw'
-                if hat[0]==1:
+                if hat[1]==1:
 
                         p='Mast Yaw clockwise '
                         camera="a"
-                elif hat[0]==-1:
+                elif hat[1]==-1:
                         p='Mast Yaw anticlockwise '
                         camera="b"
         elif c2:
                 p='Mast Pitch'
-                if  hat[1]==1:
+                if  hat[0]==1:
                         p='Mast Pitch down '
                         camera="c"
-                elif hat[1]==-1:
+                elif hat[0]==-1:
                         p='Mast Pitch up '
                         camera="d"
 
