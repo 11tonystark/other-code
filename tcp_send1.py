@@ -25,51 +25,51 @@ def arm():
         data="nM"
         if m5:
                 p='2nd Link'
-                if hat[0]==1:
+                if hat[1]==-1:
 
                         p='2nd link  UP '
                         data="nG"
-                elif hat[0]==-1:
+                elif hat[1]==1:
                         p='2nd link  DOWN '
                         data="nH"
         elif m2:
                 p='1st Link'
                 if  hat[1]==1:
-                        p='1st link DOWN '
+                        p='1st link up '
                         data="nC"
                 elif hat[1]==-1:
-                        p='1st link  UP'
+                        p='1st link  down'
                         data="nD"
-        elif m3:
-                p='Roll'
-                if hat[0]==-1 :
-                        p='Roll Clockwise '
+        elif m4:
+                p='Pitch'
+                if hat[1]==-1 :
+                        p='Pitch down '
                         data="nE"
-                elif hat[0]==1:
-                        p='Roll Anti-Clockwise'
+                elif hat[1]==1:
+                        p='Pitch up'
                         data="nF"
         elif m6:
                 p='Gripper'
                 if hat[1]==-1:
-                        p='gripper CLOSE '
+                        p='gripper OPEN '
                         data="nA"
                 elif hat[1]==1:         
-                        p='gripper OPEN '
+                        p='gripper Close '
                         data="nB"
-        elif m4:
-                p='Pitch'
-                if hat[1]==-1:
-                        p='Pitch up '
+        elif m3:
+                p='Roll'
+                if hat[0]==-1:
+                        p='Roll ANTI-Clockwise '
                         data="nI"
-                elif hat[1]==1:
-                        p='Pitch down'
+                elif hat[0]==1:
+                        p='Roll Clockwise'
                         data="nJ"
         elif m1:
                 p='swivel'
-                if hat[1]==-1 :
+                if hat[0]==1 :
                         p='swivel RIGHT'
                         data="nK"
-                elif hat[1]==1 :
+                elif hat[0]==-1 :
                         p='swivel LEFT'
                         data="nL"
         elif m7:
@@ -126,11 +126,11 @@ def motorcode():
         camera="z"
         if c1:
                 p='Mast Yaw'
-                if hat[1]==-1:
+                if hat[1]==1:
 
                         p='Mast Yaw clockwise '
                         camera="a"
-                elif hat[1]==1:
+                elif hat[1]==-1:
                         p='Mast Yaw anticlockwise '
                         camera="b"
         
@@ -224,6 +224,6 @@ try:
                     else:
                             arm()
 except KeyboardInterrupt:
-    print('lol')
+    print('E-KIll')
     pygame.display.quit()
     pygame.quit()
