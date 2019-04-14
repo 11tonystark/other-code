@@ -23,13 +23,13 @@ def arm():
         p=' '
         data="nM"
         if m5:
-                p='vinegar'
+                p='bradf'
                 if hat[1]==1:
 
-                        p='vinegar down '
+                        p='bradf up '
                         data="nG"
                 elif hat[1]==-1:
-                        p='vinegar up '
+                        p='bradf down '
                         data="nH"#swivel
         elif m6:
                 p='lead screw1'
@@ -58,10 +58,10 @@ def arm():
         elif m3:
                 p='collector plate'
                 if hat[0]==-1:
-                        p='collector clockwise '
+                        p='collector ANTI-clockwise '
                         data="nE"
                 elif hat[0]==1 :
-                        p='collector anti-clockwise '
+                        p='collector clockwise '
                         data="nF"
         elif m4:
                 p='Drill Burst'
