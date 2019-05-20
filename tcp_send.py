@@ -40,12 +40,12 @@ def arm():
                         p='1st link linear down '
                         data="nD"#actuator
         elif m3:
-                p='Roll'
-                if hat[0]==-1 :
-                        p='Roll Clockwise '
+                p='Pitch'
+                if hat[1]==1 :
+                        p='Pitch up'
                         data="nE"
-                elif hat[0]==1:
-                        p='Roll Anti-clockwise'
+                elif hat[1]==-1:
+                        p='Pitch down'
                         data="nF"
         elif m6:
                 p='gripper'
@@ -56,12 +56,12 @@ def arm():
                         p='gripper close '
                         data="nB"
         elif m4:
-                p='Pitch'
-                if hat[1]==1:
-                        p='Pitch up '
+                p='Roll'
+                if hat[0]==1:
+                        p='Roll Anti-clock'
                         data="nI"
-                elif hat[1]==-1:
-                        p='Pitch down'
+                elif hat[0]==-1:
+                        p='Roll Clock'
                         data="nJ"
         elif m1:
                 p='swivel'
@@ -125,10 +125,10 @@ def motorcode():
                         camera="b"
         elif c2:
                 p='Mast Pitch'
-                if  hat[0]==-1:
+                if  hat[0]==1:
                         p='Mast Pitch down '
                         camera="c"
-                elif hat[0]==1:
+                elif hat[0]==-1:
                         p='Mast Pitch up '
                         camera="d"
 

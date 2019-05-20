@@ -3,7 +3,7 @@ import cv2
 
 COLOR_ROWS = 80
 COLOR_COLS = 250
-capture = cv2.VideoCapture(0)
+capture = cv2.VideoCapture(1)
 if not capture.isOpened():
     raise RuntimeError('Error opening VideoCapture.')
 

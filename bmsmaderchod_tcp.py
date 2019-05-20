@@ -69,8 +69,9 @@ def arm():
                         data="nL"#gripper
         else:
                 print("N/A"),
-        pygame.display.set_caption('Motor {:2s} '.format(data))
-        print(data)                
+        data2=transmit.recv(1024)        
+       # pygame.display.set_caption('Battery {:2s} '.format(data2))
+        print(data2)                
         transmit.send(data)
 
 def motorcode():
@@ -110,8 +111,11 @@ def motorcode():
 
         val="m"+str(gear)+"x"+str(x)+"y"+str(y)
         #clear()
+        
+        
         print(val)
-
+        
+        
         transmit.send(val)
     
 count=0
@@ -144,7 +148,7 @@ player_rect = player_img.get_rect(center=screen.get_rect().center)
 
 try:
     while(1):  
-            print(transmit.recv(1024)) 
+          
             pygame.event.pump()
             on=j.get_button(1)
             if on:

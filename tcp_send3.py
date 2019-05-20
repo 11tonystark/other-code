@@ -150,7 +150,7 @@ def motorcode():
         transmit.send(val)
     
 count=0
-TCP_IP = '192.168.1.7'
+TCP_IP = '10.42.0.201'
 TCP_PORT = 5005
 BUFFER_SIZE = 1024
 MESSAGE = "Hello, World!"

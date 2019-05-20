@@ -27,10 +27,10 @@ def arm():
                 p='2nd Link'
                 if hat[1]==-1:
 
-                        p='2nd link  UP '
+                        p='2nd link down '
                         data="nG"
                 elif hat[1]==1:
-                        p='2nd link  DOWN '
+                        p='2nd link up5 '
                         data="nH"
         elif m2:
                 p='1st Link'
