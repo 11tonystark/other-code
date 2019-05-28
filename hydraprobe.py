@@ -11,6 +11,7 @@ ComPort.stopbits = 1                    # Number of Stop bits = 1
               # Convert Character to byte array
 #data = bytearray('<012>TR<\r><\n>')
 #No = ComPort.write('000PE=1\r\n')
+#serial data type C type for custom soil
 No = ComPort.write('000PE=1\r\n')
 data = ComPort.readline()
 print(data)
